@@ -1,0 +1,5 @@
+abstract class PasswordsScreenStates{}
+
+class PasswordsScreenInitialState extends PasswordsScreenStates{}
+
+class PasswordScreenChangeCategoryItemContState extends PasswordsScreenStates{}
