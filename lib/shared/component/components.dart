@@ -215,7 +215,6 @@ Widget defaultPasswordItem({
   required int itemNumber,
   required String email,
   required String password,
-  required onTapFav
 }) =>
     Padding(
       padding: const EdgeInsets.all(10.0),
@@ -260,12 +259,6 @@ Widget defaultPasswordItem({
                 ),
               ],
             ),
-          ),
-          FavoriteButton(
-            valueChanged: onTapFav,
-            iconDisabledColor: Colors.grey,
-            iconColor: Colors.purple,
-            iconSize: 60.0,
           ),
         ],
       ),
@@ -317,7 +310,6 @@ Widget item({
     ListView.separated(
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) => defaultPasswordItem(
-        onTapFav: onTapFav,
         itemNumber: index + 1,
         email: categoryList[index]["email"],
         password: categoryList[index]["password"],

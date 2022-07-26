@@ -13,7 +13,6 @@ class MediaPasswords extends StatelessWidget {
     return BlocConsumer<PasswordScreenCubit, PasswordsScreenStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        PasswordScreenCubit obj = PasswordScreenCubit.get(context);
         return Scaffold(
           appBar: AppBar(
             centerTitle: true,
@@ -29,13 +28,6 @@ class MediaPasswords extends StatelessWidget {
           body: ListView.separated(
             physics: BouncingScrollPhysics(),
             itemBuilder: (context, index) => defaultPasswordItem(
-              onTapFav: (value)async
-              {
-                if(value)
-                {
-
-                }
-              },
               itemNumber: index + 1,
               email: PasswordsLists.mediaPasswords[index]["email"],
               password: PasswordsLists.mediaPasswords[index]["password"],

@@ -20,8 +20,7 @@ class HomeLayout extends StatelessWidget {
       builder: (context, states) {
         HomelayoutCubit obj = HomelayoutCubit.get(context);
         return Scaffold(
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               navigateTo(
