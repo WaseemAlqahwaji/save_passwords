@@ -6,4 +6,5 @@ class AddPasswordChangeDropdownButtonState extends AddPasswordStates {}
 
 class AddPasswordAddNewItemState extends AddPasswordStates {}
 
+class AddPasswordChangeDropDownButtonSecureNote extends AddPasswordStates{}
 

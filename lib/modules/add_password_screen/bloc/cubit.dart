@@ -10,11 +10,29 @@ class AddPasswordCubit extends Cubit<AddPasswordStates> {
   static AddPasswordCubit get(context) => BlocProvider.of(context);
   String? valueOfDropdownButton;
   MySql dbObj = MySql();
+  String lableEmail = "Email :";
 
   void onChangedDropDownButton(String value)
   {
     valueOfDropdownButton = value;
     emit(AddPasswordChangeDropdownButtonState());
+    onChangeDropDownButtonSecureNote(value);
+  }
+
+  void onChangeDropDownButtonSecureNote(String value)
+  {
+    if(value == "Note")
+    {
+      lableEmail = "Note :";
+      emit(AddPasswordChangeDropDownButtonSecureNote());
+      print("helllllo");
+    }
+     else if (value == "PayPal" || value == "Credit " || value == "Website" || value == "Media")
+    {
+      lableEmail = "Email :";
+      emit(AddPasswordChangeDropDownButtonSecureNote());
+      print("helllllo");
+    }
   }
 
   Future<void> insertPassword({

@@ -107,10 +107,9 @@ class AddPassword extends StatelessWidget {
                         children:
                         [
                           Padding(
-                            padding:
-                                const EdgeInsetsDirectional.only(end: 15.0),
+                            padding: const EdgeInsetsDirectional.only(end: 15.0),
                             child: Text(
-                              "Email : ",
+                              obj.lableEmail,
                               style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: "RaleWay",
