@@ -16,22 +16,17 @@ class AddPasswordCubit extends Cubit<AddPasswordStates> {
   {
     valueOfDropdownButton = value;
     emit(AddPasswordChangeDropdownButtonState());
-    onChangeDropDownButtonSecureNote(value);
-  }
-
-  void onChangeDropDownButtonSecureNote(String value)
-  {
     if(value == "Note")
     {
       lableEmail = "Note :";
       emit(AddPasswordChangeDropDownButtonSecureNote());
-      print("helllllo");
+      print("note");
     }
-     else if (value == "PayPal" || value == "Credit " || value == "Website" || value == "Media")
+    else if (value == "PayPal" || value == "Credit " || value == "Website" || value == "Media")
     {
       lableEmail = "Email :";
       emit(AddPasswordChangeDropDownButtonSecureNote());
-      print("helllllo");
+      print("email");
     }
   }
 
