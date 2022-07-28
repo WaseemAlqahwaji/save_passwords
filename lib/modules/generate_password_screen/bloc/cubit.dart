@@ -18,9 +18,8 @@ class GeneratePasswordCubit extends Cubit<GeneratePasswordStates>{
   String generateRandomString(int length)
   {
     final _random = Random();
-    const _availableChars =
-        'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-    randomString = List.generate(length, (index) => _availableChars[_random.nextInt(_availableChars.length)]).join();
+    const _availableChars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    randomString = List.generate(length, (index) => _availableChars[_random.nextInt(_availableChars.length)],).join();
     return randomString;
   }
 
