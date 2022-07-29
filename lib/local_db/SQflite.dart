@@ -31,8 +31,8 @@ class MySql {
 
   Future<void> onCreate(Database database , int version)
   async {
-    onCreatePasswords(database, version);
-    onCreateNotes(database, version);
+    await onCreatePasswords(database, version);
+    await onCreateNotes(database, version);
   }
 
   Future<void> onCreatePasswords(Database database, int version) async {
