@@ -12,20 +12,26 @@ class AddPasswordCubit extends Cubit<AddPasswordStates> {
   String? valueOfDropdownButton;
   MySql dbObj = MySql();
   String lableEmail = "Email :";
-  bool isEmail = true;
+  bool isNoteNoPassword = false;
 
   void onChangedDropDownButton(String value) {
     valueOfDropdownButton = value;
     emit(AddPasswordChangeDropdownButtonState());
     if (value == "Note") {
       lableEmail = "Note :";
+      isNoteNoPassword = false;
       emit(AddPasswordChangeDropDownButtonSecureNote());
       print("note");
     } else {
       lableEmail = "Email :";
+      isNoteNoPassword = true;
       emit(AddPasswordChangeDropDownButtonSecureNote());
       print("email");
     }
+  }
+
+  Future<void> insertNote({required category ,required note})async{
+    await dbObj.insertData("INSERT INTO passwords (category,email,password,status) VALUES ('$category','$note','new')");
   }
 
   Future<void> insertPassword({
@@ -47,8 +53,7 @@ class AddPasswordCubit extends Cubit<AddPasswordStates> {
             .getData("SELECT * FROM passwords WHERE category = 'Website'");
         print(PasswordsLists.websitePasswords);
       } else if (category == "Note") {
-        PasswordsLists.secureNote = await dbObj
-            .getData("SELECT * FROM passwords WHERE category = 'Note'");
+        PasswordsLists.secureNote = await dbObj.getData("SELECT * FROM passwords WHERE category = 'Note'");
         print(PasswordsLists.secureNote);
       } else if (category == "Credit") {
         PasswordsLists.creditCardPasswords = await dbObj

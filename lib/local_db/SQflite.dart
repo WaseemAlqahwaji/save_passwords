@@ -29,9 +29,20 @@ class MySql {
     return myDatabase;
   }
 
-  Future<void> onCreate(Database database, int version) async {
+  Future<void> onCreate(Database database , int version)
+  async {
+    onCreatePasswords(database, version);
+    onCreateNotes(database, version);
+  }
+
+  Future<void> onCreatePasswords(Database database, int version) async {
     await database.execute('''CREATE TABLE passwords ("id" INTEGER PRIMARY KEY NOT NULL,"category" TEXT, "email" TEXT,"password" TEXT,"status" TEXT)''');
-    print("table created");
+    print("passwords table created");
+  }
+
+  Future<void> onCreateNotes(Database database, int version) async {
+    await database.execute('''CREATE TABLE Notes ("id" INTEGER PRIMARY KEY NOT NULL,"category" TEXT, "Note" TEXT,"status" TEXT)''');
+    print("notes table created");
   }
 
   Future<List<Map>> getData(String sql) async {

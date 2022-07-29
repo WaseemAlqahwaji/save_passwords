@@ -160,7 +160,7 @@ class AddPassword extends StatelessWidget {
                               controller: passwordController,
                               keyboardType: TextInputType.visiblePassword,
                               prefixIcon: Icons.password,
-                              clickable: true,
+                              clickable: obj.isNoteNoPassword,
                               prefixIconColor: Colors.purple,
                               lableTextColor: Colors.purple,
                               suffixIcon: Icons.edit,
@@ -183,8 +183,30 @@ class AddPassword extends StatelessWidget {
                       Center(
                         child: defaultButton(
                           onPressed: () async {
-                            if(formKey.currentState!.validate() && obj.valueOfDropdownButton != null)
+                            if(formKey.currentState!.validate() && obj.valueOfDropdownButton != null) // try do note condition
                             {
+                              if(obj.isNoteNoPassword)
+                              {
+                                await obj.insertNote(
+                                  category: obj.valueOfDropdownButton!,
+                                  note: emailController.text,
+                                ).then((value)
+                                {
+                                  Fluttertoast.showToast(
+                                      msg: "Add note done",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 1,
+                                      backgroundColor: Colors.black.withOpacity(0.7),
+                                      textColor: Colors.white,
+                                      fontSize: 12.0
+                                  );
+                                  Navigator.pop(context);
+                                }).catchError((error)
+                                {
+                                  print("error while inserting password $error");
+                                });
+                              }
                               await obj.insertPassword(
                                 category: obj.valueOfDropdownButton!,
                                 email: emailController.text,
